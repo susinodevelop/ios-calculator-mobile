@@ -18,23 +18,20 @@ const CalculatorScreen = () => {
     appendNumber,
     appendDecimal,
     calculate,
+    percentage,
+    toggleSign,
   } = useCalculator();
-
-    function clearInput() {
-        throw new Error("Function not implemented.");
-    }
 
   return (
     <View style={styles.container}>
       <View style={styles.screenContainer}>
         <Text style={styles.calculation}>{input}</Text>
-        {/*TODO revisar lo que se muestra en este texto */}
         <Text style={styles.result}>{result}</Text>
       </View>
       <View style={styles.buttons}>
         <FunctionalButton value={"C"} fun={clear} />
-        <FunctionalButton value={"+/-"} fun={() => {}} />
-        <FunctionalButton value={"%"} fun={() => {}} />
+        <FunctionalButton value={"+/-"} fun={toggleSign} />
+        <FunctionalButton value={"%"} fun={percentage} />
         <OperatorButton value={"/"} fun={divide} />
         <NumberButton value={7} fun={() => appendNumber("7")} />
         <NumberButton value={8} fun={() => appendNumber("8")} />
@@ -56,9 +53,12 @@ const CalculatorScreen = () => {
           fun={() => appendNumber("0")}
         />
         <OperatorButton value={"."} fun={appendDecimal} />
-        <OperatorButton value={"="} fun={()=>{
-            calculate()
-        }} />
+        <OperatorButton
+          value={"="}
+          fun={() => {
+            calculate();
+          }}
+        />
       </View>
     </View>
   );

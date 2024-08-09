@@ -16,7 +16,7 @@ const useCalculator = () => {
   const calculate = () => {
     try {
       const calculation = eval(input);
-      setResult(calculation);
+      setResult(String(calculation));
       setInput(String(calculation));
     } catch (error) {
       setResult("Error");
@@ -27,8 +27,39 @@ const useCalculator = () => {
   const subtract = () => addToInput("-");
   const multiply = () => addToInput("*");
   const divide = () => addToInput("/");
+
   const appendNumber = (num: string) => addToInput(String(num));
-  const appendDecimal = () => addToInput(".");
+  const appendDecimal = () => {
+    if (!input.includes(".")) {
+      addToInput(".");
+    }
+  };
+
+  const percentage = () => {
+    if (input) {
+      try {
+        const current = parseFloat(input);
+        const newValue = current / 100;
+        setResult(String(newValue));
+        setInput(String(newValue));
+      } catch (error) {
+        setResult("Error");
+      }
+    }
+  };
+  
+  const toggleSign = () => {
+    if (input) {
+      try {
+        const current = parseFloat(input);
+        const newValue = current * -1;
+        setResult(String(newValue));
+        setInput(String(newValue));
+      } catch (error) {
+        setResult("Error");
+      }
+    }
+  };
 
   return {
     result,
@@ -41,6 +72,8 @@ const useCalculator = () => {
     appendNumber,
     appendDecimal,
     calculate,
+    percentage,   
+    toggleSign,   
   };
 };
 
