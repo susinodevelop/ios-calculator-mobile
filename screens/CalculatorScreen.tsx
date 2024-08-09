@@ -47,9 +47,9 @@ const CalculatorScreen = () => {
         <OperatorButton value={"+"} fun={add} />
         <NumberButton
           value={0}
-          width="40%"
+          width="45%"
           height="20%"
-          aspectRatio={2 / 1}
+          aspectRatio={2.25 / 1}
           fun={() => appendNumber("0")}
         />
         <OperatorButton value={"."} fun={appendDecimal} />
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   screenContainer: {
-    flex: 0.4,
+    flex: 0.35,
     alignItems: "flex-end",
     justifyContent: "flex-end",
     margin: 30,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   buttons: {
-    flex: 0.6,
+    flex: 0.65,
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 20,
