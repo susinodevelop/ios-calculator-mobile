@@ -7,7 +7,7 @@ export const colors = {
 
   textFunctional: "#000000",
   textNumber: "#FFFFFF",
-  textOperator: "FFFFFF",
+  textOperator: "#FFFFFF",
   background: "#000000",
 };
 
