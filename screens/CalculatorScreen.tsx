@@ -2,9 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CalculatorButton from "../components/CalculatorButton";
 import useCalculator from "../hooks/useCalculator";
-import NumberButton from "../components/NumberButton";
-import OperatorButton from "../components/OperatorButton";
-import FunctionalButton from "../components/FunctionalButton";
+import { colors, globalStyles } from "../theme/theme";
 
 const CalculatorScreen = () => {
   const {
@@ -25,39 +23,123 @@ const CalculatorScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.screenContainer}>
-        <Text style={styles.calculation}>{input}</Text>
-        <Text style={styles.result}>{result}</Text>
+        <Text style={globalStyles.result}>{result}</Text>
+        <Text style={globalStyles.calculation}>{input}</Text>
       </View>
       <View style={styles.buttons}>
-        <FunctionalButton value={"C"} fun={clear} />
-        <FunctionalButton value={"+/-"} fun={toggleSign} />
-        <FunctionalButton value={"%"} fun={percentage} />
-        <OperatorButton value={"/"} fun={divide} />
-        <NumberButton value={7} fun={() => appendNumber("7")} />
-        <NumberButton value={8} fun={() => appendNumber("8")} />
-        <NumberButton value={9} fun={() => appendNumber("9")} />
-        <OperatorButton value={"*"} fun={multiply} />
-        <NumberButton value={4} fun={() => appendNumber("4")} />
-        <NumberButton value={5} fun={() => appendNumber("5")} />
-        <NumberButton value={6} fun={() => appendNumber("6")} />
-        <OperatorButton value={"-"} fun={subtract} />
-        <NumberButton value={1} fun={() => appendNumber("1")} />
-        <NumberButton value={2} fun={() => appendNumber("2")} />
-        <NumberButton value={3} fun={() => appendNumber("3")} />
-        <OperatorButton value={"+"} fun={add} />
-        <NumberButton
-          value={0}
-          width="45%"
-          height="20%"
-          aspectRatio={2.25 / 1}
+        <CalculatorButton
+          text={"C"}
+          color={colors.textFunctional}
+          style={globalStyles.functionButton}
+          fun={clear}
+        />
+        <CalculatorButton
+          text={"+/-"}
+          color={colors.textFunctional}
+          style={globalStyles.functionButton}
+          fun={toggleSign}
+        />
+        <CalculatorButton
+          text={"%"}
+          color={colors.textFunctional}
+          style={globalStyles.functionButton}
+          fun={percentage}
+        />
+        <CalculatorButton
+          text={"/"}
+          color={colors.textOperator}
+          style={globalStyles.operatorButton}
+          fun={divide}
+        />
+        <CalculatorButton
+          text={"7"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("7")}
+        />
+        <CalculatorButton
+          text={"8"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("8")}
+        />
+        <CalculatorButton
+          text={"9"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("9")}
+        />
+        <CalculatorButton
+          text={"*"}
+          color={colors.textOperator}
+          style={globalStyles.operatorButton}
+          fun={multiply}
+        />
+        <CalculatorButton
+          text={"4"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("4")}
+        />
+        <CalculatorButton
+          text={"5"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("5")}
+        />
+        <CalculatorButton
+          text={"6"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("6")}
+        />
+        <CalculatorButton
+          text={"-"}
+          color={colors.textOperator}
+          style={globalStyles.operatorButton}
+          fun={subtract}
+        />
+        <CalculatorButton
+          text={"1"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("1")}
+        />
+        <CalculatorButton
+          text={"2"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("2")}
+        />
+        <CalculatorButton
+          text={"3"}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={() => appendNumber("3")}
+        />
+        <CalculatorButton
+          text={"+"}
+          color={colors.textOperator}
+          style={globalStyles.operatorButton}
+          fun={add}
+        />
+        <CalculatorButton
+          text={"0"}
+          color={colors.textNumber}
+          style={{ ...globalStyles.numberButton, ...globalStyles.ceroButton }}
           fun={() => appendNumber("0")}
         />
-        <OperatorButton value={"."} fun={appendDecimal} />
-        <OperatorButton
-          value={"="}
-          fun={() => {
-            calculate();
-          }}
+        <CalculatorButton
+          text={"."}
+          color={colors.textNumber}
+          style={globalStyles.numberButton}
+          fun={appendDecimal}
+        />
+        <CalculatorButton
+          text={"="}
+          color={colors.textOperator}
+          style={globalStyles.operatorButton}
+          fun={calculate}
         />
       </View>
     </View>
@@ -75,14 +157,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     margin: 30,
   },
-  calculation: {
-    color: "white",
-    fontSize: 50,
-  },
-  result: {
-    color: "gray",
-    fontSize: 40,
-  },
   buttons: {
     flex: 0.65,
     flexDirection: "row",
@@ -91,10 +165,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 60,
   },
 });
 

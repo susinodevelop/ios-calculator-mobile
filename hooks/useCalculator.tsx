@@ -14,6 +14,9 @@ const useCalculator = () => {
   };
 
   const calculate = () => {
+    if(input === ""){
+      return
+    }
     try {
       const calculation = eval(input);
       setResult(String(calculation));
