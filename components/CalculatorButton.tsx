@@ -12,10 +12,11 @@ const CalculatorButton = ({ text, color, style, fun }: Props) => {
   return (
     <Pressable
       onPress={fun}
-      style={{
-        ...globalStyles.button,
-        ...style,
-      }}
+      style={({ pressed }) => [
+        globalStyles.button,
+        style,
+        pressed ? { opacity: 0.5 } : { opacity: 1 },
+      ]}
     >
       <Text style={{ ...globalStyles.buttonText, color }}>{text}</Text>
     </Pressable>
