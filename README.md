@@ -1,6 +1,6 @@
 # IOS Calculator Mobile - React Native
 
-![Calculator Screenshot](./assets/screenshot.png)
+![Calculator Screenshot](./assets/screenshot.jpg)
 
 ## Descripción
 
