@@ -6,8 +6,15 @@ import {
   StatusBar as NativeStatusBar,
 } from "react-native";
 import CalculatorScreen from "./screens/CalculatorScreen";
+import * as NavigationBar from "expo-navigation-bar";
+import React = require("react");
 
 export default function App() {
+  React.useEffect(() => {
+    NavigationBar.setBackgroundColorAsync("black");
+    NavigationBar.setButtonStyleAsync("light");
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
